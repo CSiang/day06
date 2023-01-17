@@ -113,12 +113,17 @@ public final class App {
         employeeList.sort(Comparator.comparing(emp -> emp.getFirstName()));
         employeeList.forEach(emp -> System.out.println(emp));
 
+        System.out.println("\nThis is to sort the names reversely.");
+        Comparator <employee> compare = Comparator.comparing(e -> e.getFirstName());
+        employeeList.sort(compare.reversed());
+        employeeList.forEach(emp -> System.out.println(emp));
+
+
         System.out.println("\nBelow sorted by using groupByComparator.");
         Comparator <employee> groupByComparator = Comparator.comparing(employee::getFirstName).thenComparing(employee::getLastName);
         employeeList.sort(groupByComparator);
         employeeList.forEach(emp -> System.out.println(emp));
         
-
 
     }
 }

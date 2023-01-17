@@ -80,6 +80,10 @@ public final class App {
         System.out.println("MinusOperation " + MinusOperation.process(50,5));
         System.out.println("concatenateString " + concatenateString.process("Aba", "Ipsen"));
 
+        messageInterface printString = (a) -> {
+            System.out.println(a);
+        };
+        printString.printMessage("Tough");
 
 
     }

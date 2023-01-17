@@ -1,8 +1,12 @@
 package day06;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -51,6 +55,7 @@ public final class App {
         // executorService2.execute(mRI5);
         // executorService2.shutdown();    
 
+        /*
         ExecutorService executorService3 = Executors.newCachedThreadPool(); // Max threads will be the max number of thread your pc can handle
         executorService3.execute(mRI);
         executorService3.execute(mRI2);
@@ -83,7 +88,36 @@ public final class App {
         messageInterface printString = (a) -> {
             System.out.println(a);
         };
-        printString.printMessage("Tough");
+        printString.printMessage("Test message.");
+        */
+
+
+        // List of employees
+
+        List<employee> employeeList = new ArrayList<> ();
+        employeeList.add(new employee(1, "Adam","Chiang",50000));
+        employeeList.add(new employee(2, "Bertram","Chong",70000));
+        employeeList.add(new employee(3, "Casey","Lim",25000));
+        employeeList.add(new employee(4, "Daryl","Chiang",100000));
+        employeeList.add(new employee(5, "Elenor","Kim",80000));
+        employeeList.add(new employee(6, "Eerl","Chiang",70000));
+
+        employeeList.forEach(emp -> System.out.println(emp));
+
+        System.out.println("\nBelow printing filtered employees.");
+        List <employee> filteredEmployees = employeeList.stream()
+                                            .filter(emp -> emp.getLastName().contains("Ch")).collect(Collectors.toList());
+        filteredEmployees.forEach(emp-> System.out.println(emp));
+
+        System.out.println("\nTo print out sorted names nased on 1st name.");
+        employeeList.sort(Comparator.comparing(emp -> emp.getFirstName()));
+        employeeList.forEach(emp -> System.out.println(emp));
+
+        System.out.println("\nBelow sorted by using groupByComparator.");
+        Comparator <employee> groupByComparator = Comparator.comparing(employee::getFirstName).thenComparing(employee::getLastName);
+        employeeList.sort(groupByComparator);
+        employeeList.forEach(emp -> System.out.println(emp));
+        
 
 
     }

@@ -59,6 +59,27 @@ public final class App {
         executorService3.execute(mRI5);
         executorService3.shutdown();  
 
+        // Below are showing lambda function.
+        RunnableInterface<Integer> addOperation = (a,b) -> { 
+            return a+b;
+        };
+
+        RunnableInterface<Integer> multiplyOperation = (a,b) -> {
+            return a*b;
+        };
+
+        RunnableInterface<Integer> MinusOperation = (a,b) -> { 
+            return a-b;
+        };
+        RunnableInterface<String> concatenateString = (a,b) -> {
+            return a+b;
+        };
+        
+        System.out.println("addOperation " + addOperation.process(1,1));
+        System.out.println("multiplyOperation " + multiplyOperation.process(2,5));
+        System.out.println("MinusOperation " + MinusOperation.process(50,5));
+        System.out.println("concatenateString " + concatenateString.process("Aba", "Ipsen"));
+
 
 
     }
